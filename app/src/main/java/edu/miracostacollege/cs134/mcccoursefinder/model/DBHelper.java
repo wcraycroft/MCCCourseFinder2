@@ -280,9 +280,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     //********** OFFERING TABLE OPERATIONS:  ADD, GETALL, EDIT, DELETE
-    //TODO:  Create the following methods: addOffering, getAllOfferings, deleteOffering
-    //TODO:  deleteAllOfferings, updateOffering, and getOffering
-    //TODO:  Use the Courses and Instructors methods above as a guide.
+    //DONE:  Create the following methods: addOffering, getAllOfferings, deleteOffering
+    //DONE:  deleteAllOfferings, updateOffering, and getOffering
+    //DONE:  Use the Courses and Instructors methods above as a guide.
 
 
     public void addOffering(int crn, String semester, long courseId, long instructorId) {
@@ -383,7 +383,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     //********** IMPORT FROM CSV OPERATIONS:  Courses, Instructors and Offerings
-    //TODO:  Write the code for the import OfferingsFromCSV method.
+    //DONE:  Write the code for the import OfferingsFromCSV method.
     public boolean importOfferingsFromCSV(String csvFileName) {
         AssetManager am = mContext.getAssets();
         InputStream inStream = null;

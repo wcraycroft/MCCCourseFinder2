@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         db = new DBHelper(this);
         db.importCoursesFromCSV("courses.csv");
         db.importInstructorsFromCSV("instructors.csv");
+        // DONE: use import OfferingsFromCSV
         db.importOfferingsFromCSV("offerings.csv");
 
         allCoursesList = db.getAllCourses();
