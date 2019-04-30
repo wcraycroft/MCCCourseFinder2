@@ -7,11 +7,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -63,6 +61,12 @@ public class MainActivity extends AppCompatActivity {
         final ArrayAdapter<String> instructorSpinnerAdapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, getInstructorNames());
         instructorSpinner.setAdapter(instructorSpinnerAdapter);
+
+        //DONE (5): Create an AdapterView.OnItemSelectedListener named instructorSpinnerListener and implement
+        //TODO: the onItemSelected method to do the following:
+        //TODO: If the selectedInstructorName != "[Select Instructor]", clear the offeringListAdapter,
+        //TODO: then rebuild it with every Offering that has an instructor whose full name equals the one selected.
+
         instructorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -92,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 
@@ -104,6 +107,13 @@ public class MainActivity extends AppCompatActivity {
 
         // Wire up EditText
         courseTitleEditText = findViewById(R.id.courseTitleEditText);
+
+        //DONE (4): Create a TextWatcher named courseTitleTextWatcher that will implement the onTextChanged method.
+        //TODO: In this method, set the selection of the instructorSpinner to 0, then
+        //TODO: Clear the offeringListAdapter
+        //TODO: If the entry is an empty String "", the offeringListAdapter should addAll from the allOfferingsList
+        //TODO: Else, the offeringListAdapter should add each Offering whose course title starts with the entry.
+
         courseTitleEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -136,8 +146,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 
 
@@ -155,22 +163,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //TODO (3): Create a void method named reset that sets the test of the edit text back to an
+    //Done (3): Create a void method named reset that sets the test of the edit text back to an
     //TODO: empty string, sets the selection of the Spinner to 0 and clears out the offeringListAdapter,
     //TODO: then rebuild it with the allOfferingsList
-
-
-
-    //TODO (4): Create a TextWatcher named courseTitleTextWatcher that will implement the onTextChanged method.
-    //TODO: In this method, set the selection of the instructorSpinner to 0, then
-    //TODO: Clear the offeringListAdapter
-    //TODO: If the entry is an empty String "", the offeringListAdapter should addAll from the allOfferingsList
-    //TODO: Else, the offeringListAdapter should add each Offering whose course title starts with the entry.
-
-
-
-    //TODO (5): Create an AdapterView.OnItemSelectedListener named instructorSpinnerListener and implement
-    //TODO: the onItemSelected method to do the following:
-    //TODO: If the selectedInstructorName != "[Select Instructor]", clear the offeringListAdapter,
-    //TODO: then rebuild it with every Offering that has an instructor whose full name equals the one selected.
+    public void reset (View v)
+    {
+        courseTitleEditText.setText("");
+        instructorSpinner.setSelection(0);
+        offeringsListAdapter.clear();
+        offeringsListAdapter.addAll(allOfferingsList);
+    }
 }
